@@ -1,6 +1,6 @@
 # Dockerfile
 # FROM registry.access.redhat.com/ubi8/nodejs-18:latest
-FROM registry.access.redhat.com/ubi9/nodejs-18:1-80.1699550448
+FROM registry.access.redhat.com/ubi9/nodejs-18:1-80.1699550448 as builder
 
 # set destination work directory
 # WORKDIR /opt/app-root/src
@@ -12,6 +12,10 @@ RUN npm install -g npm@10.2.4
 
 # RUN npm install -loglevel silent
 RUN npm install
+
+FROM registry.redhat.io/rhel8/nodejs-18-minimal:1-86
+
+COPY --from=builder $HOME $HOME
 RUN npm run build
 
 ENV NUXT_HOST=0.0.0.0
