@@ -15,6 +15,8 @@ RUN npm install
 
 FROM registry.redhat.io/rhel8/nodejs-18-minimal:1-86
 
+WORKDIR $HOME
+
 COPY --from=builder $HOME $HOME
 RUN npm run build
 
