@@ -3,10 +3,10 @@
 FROM registry.access.redhat.com/ubi9/nodejs-18:1-80.1699550448
 
 # set destination work directory
-WORKDIR /opt/app-root/src
+# WORKDIR /opt/app-root/src
 
 # copy the app sorces
-COPY . /opt/app-root/src
+# COPY . /opt/app-root/src
 
 RUN npm install -g npm@10.2.4
 
