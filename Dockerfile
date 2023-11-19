@@ -32,7 +32,7 @@ WORKDIR $HOME
 COPY --from=builder $HOME $HOME
 
 RUN pwd
-RUN ls
+RUN ls -al /opt/app-root/src/package-lock.json
 
 RUN npm run build
 
