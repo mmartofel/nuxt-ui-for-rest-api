@@ -16,7 +16,7 @@ RUN ls
 
 RUN npm install -g npm@10.2.4
 
-RUN chown -r default:root ./*
+RUN chown -R default:root ./*
 RUN pwd
 RUN ls -al
 
