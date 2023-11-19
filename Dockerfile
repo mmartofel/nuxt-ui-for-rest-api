@@ -16,7 +16,8 @@ RUN npm run build
 RUN npm prune
 
 FROM registry.redhat.io/rhel8/nodejs-18-minimal:1-86
-
+RUN pwd
+RUN ls -al
 COPY --from=builder .output .output
 
 ENV NUXT_HOST=0.0.0.0
