@@ -8,6 +8,8 @@ WORKDIR /opt/app-root/src
 # copy the app sorces
 COPY . /opt/app-root/src
 
+RUN npm install -g npm@10.2.4
+
 RUN npm install -loglevel silent
 RUN npm run build
 
