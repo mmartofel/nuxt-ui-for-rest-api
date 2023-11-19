@@ -3,21 +3,37 @@
 FROM registry.access.redhat.com/ubi9/nodejs-18:1-80.1699550448 as builder
 
 # set destination work directory
-WORKDIR /opt/app-root/src
+WORKDIR $HOME
+RUN pwd
+RUN ls
 
 # copy the app sorces
-COPY . /opt/app-root/src
+COPY . $HOME
+
+RUN pwd
+RUN ls
+
 
 RUN npm install -g npm@10.2.4
+
+RUN pwd
+RUN ls
 
 # RUN npm install -loglevel silent
 RUN npm install
 
+RUN pwd
+RUN ls
+
 FROM registry.redhat.io/rhel8/nodejs-18-minimal:1-86
 
-WORKDIR /opt/app-root/src
+WORKDIR $HOME
 
-COPY --from=builder /opt/app-root/src /opt/app-root/src
+COPY --from=builder $HOME $HOME
+
+RUN pwd
+RUN ls
+
 RUN npm run build
 
 ENV NUXT_HOST=0.0.0.0
