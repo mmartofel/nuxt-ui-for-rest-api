@@ -3,7 +3,7 @@
         <div class="justify">
             <span v-if="error"> Can't read data ... data table could not be displayed! {{ error }}</span>
             <span v-else> 
-                <UTable :rows="people" /> 
+                <UTable :rows=people /> 
             </span>
         </div>
     </UCard>
@@ -13,10 +13,18 @@
             <span v-else>Data has being loaded.</span>
             <span v-if="pending">Loading...</span>
         </div>
+        <div> API URL is set to: {{ url }}</div>
     </UCard>
 </template>
 
 <script setup lang="ts">
-    const url = "http://127.0.0.1:8080/api/person/all"
+
+    // use runtime config 'public' defined at nuxt.config.ts
+    const runtimeConfig = useRuntimeConfig();
+    let url = runtimeConfig.public.NUXT_API_URL_PERSON_ALL
+        if (url === '') {
+            url = 'unedfined API'
+        }
     const { data: people, pending, error } = await useFetch(url)
+
 </script>
