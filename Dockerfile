@@ -2,6 +2,9 @@
 # FROM registry.access.redhat.com/ubi8/nodejs-18:latest
 FROM registry.access.redhat.com/ubi9/nodejs-18:1-80.1699550448 as builder
 
+USER root
+
+RUN id
 # set destination work directory
 WORKDIR $HOME
 RUN pwd
