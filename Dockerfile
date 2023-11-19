@@ -31,6 +31,7 @@ RUN ls
 
 FROM registry.redhat.io/rhel8/nodejs-18-minimal:1-86
 
+USER root
 WORKDIR $HOME
 
 COPY --from=builder $HOME $HOME
