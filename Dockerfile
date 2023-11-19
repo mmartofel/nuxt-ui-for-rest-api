@@ -15,10 +15,13 @@ RUN npm install -loglevel silent
 RUN npm run build
 RUN npm prune
 
+RUN pwd
+RUN ls -al
+
 FROM registry.redhat.io/rhel8/nodejs-18-minimal:1-86
 RUN pwd
 RUN ls -al
-COPY --from=builder .output .output
+COPY --from=builder /opt/app-root/src/.output /opt/app-root/src/.output
 
 ENV NUXT_HOST=0.0.0.0
 ENV NUXT_PORT=3000
