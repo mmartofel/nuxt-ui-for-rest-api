@@ -15,17 +15,19 @@ RUN npm install -loglevel silent
 RUN npm run build
 RUN npm prune
 
+CMD [ "npm", "run dev" ]
+
 # create working image
 # FROM registry.access.redhat.com/ubi9/nodejs-18-minimal:1-85.1699549021
-FROM registry.access.redhat.com/ubi9/nodejs-18:1-80.1699550448
+# FROM registry.access.redhat.com/ubi9/nodejs-18:1-80.1699550448
 
-USER root
+# USER root
 
-COPY --from=builder /opt/app-root/src/.output /opt/app-root/src/.output
+# COPY --from=builder /opt/app-root/src/.output /opt/app-root/src/.output
 
-ENV NUXT_HOST=0.0.0.0
-ENV NUXT_PORT=3000
+# ENV NUXT_HOST=0.0.0.0
+# ENV NUXT_PORT=3000
 
-EXPOSE 3000
+# EXPOSE 3000
 
-CMD [ "node", "/opt/app-root/src/.output/server/index.mjs" ]
+# CMD [ "node", "/opt/app-root/src/.output/server/index.mjs" ]
