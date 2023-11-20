@@ -2,8 +2,8 @@
     <UCard class="mt-10">
         <div class="justify">
             <span v-if="error"> Can't read data ... data table could not be displayed! {{ error }}</span>
-            <span v-else> 
-                <UTable :rows=people /> 
+            <span v-else>
+                <UTable :rows="people" /> 
             </span>
         </div>
     </UCard>
@@ -19,12 +19,11 @@
 
 <script setup lang="ts">
 
-    // use runtime config 'public' defined at nuxt.config.ts
-    const runtimeConfig = useRuntimeConfig();
-    let url = runtimeConfig.public.NUXT_API_URL_PERSON_ALL
-        if (url === '') {
-            url = 'unedfined API'
-        }
-    const { data: people, pending, error } = await useFetch(url)
+    // read NUXT_API_URL_PERSON_ALL from actual env
+    var url = process.env.NUXT_API_URL_PERSON_ALL as string
+       if (url === '') {
+           url = 'unedfined API'
+       }
+    const { data: people, pending, error } = await useFetch('http://127.0.0.1:8080/api/person/all')
 
 </script>

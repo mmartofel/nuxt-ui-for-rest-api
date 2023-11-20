@@ -1,0 +1,6 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nuxt-api-urls
+data:
+  NUXT_API_URL_PERSON_ALL: http://nuxt-ui-for-rest-api:3000/api/person/all
