@@ -19,7 +19,9 @@ ENV NUXT_HOST=0.0.0.0
 ENV NUXT_PORT=3000
 EXPOSE 3000
 
-CMD [ "npm", "run", "dev" ]
+CMD chmod 777 /opt/app-root/src/.nuxt
+
+CMD npm run dev
 
 # create working image
 # FROM registry.access.redhat.com/ubi9/nodejs-18-minimal:1-85.1699549021
