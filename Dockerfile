@@ -1,5 +1,5 @@
 # create builder image
-FROM registry.access.redhat.com/ubi9/nodejs-18:1-80.1699550448 as builder
+FROM registry.access.redhat.com/ubi9/nodejs-18:1-80.1699550448
 
 USER root
 
@@ -15,7 +15,7 @@ RUN npm install -loglevel silent
 RUN npm run build
 RUN npm prune
 
-CMD [ "npm", "run dev" ]
+CMD [ "npm", "run", "dev" ]
 
 # create working image
 # FROM registry.access.redhat.com/ubi9/nodejs-18-minimal:1-85.1699549021
