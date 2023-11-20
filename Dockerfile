@@ -7,6 +7,9 @@ USER root
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
+# Upgrade npm first
+RUN npm install -g npm@10.2.4
+
 # Install app dependencies
 RUN npm install
 
