@@ -24,6 +24,6 @@
        if (url === '') {
            url = 'unedfined API'
        }
-    const { data: people, pending, error } = await useFetch('http://127.0.0.1:8080/api/person/all')
+    const { data: people, pending, error } = await useFetch('http://probes:8080/api/person/all')
 
 </script>
