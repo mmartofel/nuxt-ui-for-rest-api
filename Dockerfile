@@ -22,6 +22,7 @@ EXPOSE 3000
 
 # CMD mkdir /opt/app-root/src/.nuxt
 # CMD chmod 777 /opt/app-root/src/.nuxt
+CMD sudo chown -R 1000750000:0 "/.npm"
 
 CMD npm run dev
 
