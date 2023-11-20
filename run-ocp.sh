@@ -5,7 +5,7 @@ oc delete deployment nuxt-ui-for-rest-api
 oc delete service nuxt-ui-for-rest-api
 
 git add .
-git commit -m "update" $DATE
+git commit -m "update $DATE"
 git push origin main
 
 oc new-app https://github.com/mmartofel/nuxt-ui-for-rest-api
