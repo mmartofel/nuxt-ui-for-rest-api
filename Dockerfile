@@ -34,4 +34,4 @@ ENV NUXT_PORT=3000
 EXPOSE 3000
 
 # Start node process
-CMD npm start dev
+CMD npm run dev
