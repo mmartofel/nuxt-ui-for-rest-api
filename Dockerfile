@@ -16,7 +16,8 @@ RUN npm run build
 RUN npm prune
 
 # create working image
-FROM registry.access.redhat.com/ubi9/nodejs-18-minimal:1-85.1699549021
+# FROM registry.access.redhat.com/ubi9/nodejs-18-minimal:1-85.1699549021
+FROM registry.access.redhat.com/ubi9/nodejs-18:1-80.1699550448
 
 USER root
 
