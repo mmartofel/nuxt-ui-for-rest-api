@@ -2,7 +2,7 @@
 # FROM registry.access.redhat.com/ubi9/nodejs-18:1-80.1699550448
 FROM node
 
-USER root
+# USER root
 
 # set destination work directory
 WORKDIR /opt/app-root/src
@@ -11,7 +11,7 @@ WORKDIR /opt/app-root/src
 COPY . /opt/app-root/src
 
 # build application
-RUN npm install -g npm@10.2.4
+# RUN npm install -g npm@10.2.4
 RUN npm install -loglevel silent
 RUN npm run build
 RUN npm prune
