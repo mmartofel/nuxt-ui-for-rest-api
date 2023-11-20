@@ -1,5 +1,6 @@
 # create builder image
-FROM registry.access.redhat.com/ubi9/nodejs-18:1-80.1699550448
+# FROM registry.access.redhat.com/ubi9/nodejs-18:1-80.1699550448
+FROM node
 
 USER root
 
@@ -19,8 +20,8 @@ ENV NUXT_HOST=0.0.0.0
 ENV NUXT_PORT=3000
 EXPOSE 3000
 
-CMD mkdir /opt/app-root/src/.nuxt
-CMD chmod 777 /opt/app-root/src/.nuxt
+# CMD mkdir /opt/app-root/src/.nuxt
+# CMD chmod 777 /opt/app-root/src/.nuxt
 
 CMD npm run dev
 
