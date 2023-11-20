@@ -19,11 +19,14 @@
 
 <script setup lang="ts">
 
-    // read NUXT_API_URL_PERSON_ALL from actual env
-    var url = process.env.NUXT_API_URL_PERSON_ALL as string
-       if (url === '') {
-           url = 'unedfined API'
-       }
-    const { data: people, pending, error } = await useFetch(url)
+// read API_URL_PERSON_ALL from runtime configuration set at nuxt.config.ts
+const runtimeConfig = useRuntimeConfig();
+var url = runtimeConfig.public.API_URL_PERSON_ALL
+
+// check if NUXT_API_URL_PERSON_ALL is set at your env
+if (url === ''){
+    url = 'undefined API URL, can not find NUXT_API_URL_PERSON_ALL env variable'
+}
+const { data: people, pending, error } = await useFetch(url)
 
 </script>
