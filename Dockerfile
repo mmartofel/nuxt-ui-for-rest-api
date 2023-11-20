@@ -20,9 +20,8 @@ ENV NUXT_HOST=0.0.0.0
 ENV NUXT_PORT=3000
 EXPOSE 3000
 
-# CMD mkdir /opt/app-root/src/.nuxt
-# CMD chmod 777 /opt/app-root/src/.nuxt
-CMD sudo chown -R 1000750000:0 "/.npm"
+CMD mkdir /opt/app-root/src/.npm
+CMD sudo chmod -R 777 /.npm
 
 CMD npm run dev
 
