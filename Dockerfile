@@ -15,6 +15,10 @@ RUN npm install -loglevel silent
 RUN npm run build
 RUN npm prune
 
+ENV NUXT_HOST=0.0.0.0
+ENV NUXT_PORT=3000
+EXPOSE 3000
+
 CMD [ "npm", "run", "dev" ]
 
 # create working image
@@ -27,7 +31,6 @@ CMD [ "npm", "run", "dev" ]
 
 # ENV NUXT_HOST=0.0.0.0
 # ENV NUXT_PORT=3000
-
 # EXPOSE 3000
 
 # CMD [ "node", "/opt/app-root/src/.output/server/index.mjs" ]
