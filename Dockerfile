@@ -27,7 +27,7 @@ USER 1000750000
 # Run application in 'development' mode
 ENV NODE_ENV development
 
-# Listen on port 8080
+# Listen on port 3000
 ENV PORT 3000
 ENV NUXT_HOST=0.0.0.0
 ENV NUXT_PORT=3000
