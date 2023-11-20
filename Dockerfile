@@ -18,6 +18,8 @@ RUN npm prune
 # create working image
 FROM registry.access.redhat.com/ubi9/nodejs-18-minimal:1-85.1699549021
 
+USER root
+
 COPY --from=builder /opt/app-root/src/.output /opt/app-root/src/.output
 
 ENV NUXT_HOST=0.0.0.0
