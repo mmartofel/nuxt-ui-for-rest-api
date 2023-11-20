@@ -23,6 +23,9 @@
 const runtimeConfig = useRuntimeConfig();
 var url = runtimeConfig.public.API_URL_PERSON_ALL
 
+console.log('API URL set to:')
+console.log(url)
+
 // check if NUXT_API_URL_PERSON_ALL is set at your env
 if (url === ''){
     url = 'undefined API URL, can not find NUXT_API_URL_PERSON_ALL env variable'
