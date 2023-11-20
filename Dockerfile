@@ -19,10 +19,10 @@ COPY . /opt/app-root/src
 
 # Elevate privileges to change owner of source files
 USER root
-RUN chown -R 1001:0 /opt/app-root/src
+RUN chown -R 1000750000:0 /opt/app-root/src
 
 # Restore default user privileges
-USER 1001
+USER 1000750000
 
 # Run application in 'development' mode
 ENV NODE_ENV development
