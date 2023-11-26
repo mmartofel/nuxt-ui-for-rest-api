@@ -4,6 +4,9 @@
             <span v-if="error"> Can't read data ... data table could not be displayed! {{ error }}</span>
             <span v-else>
                 <UTable :rows="people" /> 
+                    <div class="flex justify-end px-3 py-3.5 border-t border-gray-200 dark:border-gray-700">
+                        <UPagination v-model="page" :page-count="5" :total="people.length" />
+                    </div>
             </span>
         </div>
     </UCard>
@@ -31,5 +34,12 @@ if (url === ''){
     url = 'undefined API URL, can not find NUXT_API_URL_PERSON_ALL env variable'
 }
 const { data: people, pending, error } = await useFetch(url)
+
+const page = ref(1)
+const pageCount = 5
+const rows = computed(() => {
+  return people.slice((page.value - 1) * pageCount, (page.value) * pageCount)
+})
+
 
 </script>
