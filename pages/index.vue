@@ -3,9 +3,9 @@
         <div class="justify">
             <span v-if="error"> Can't read data ... data table could not be displayed! {{ error }}</span>
             <span v-else>
-                <UTable :rows="people" /> 
-                    <div class="flex justify-end px-3 py-3.5 border-t border-gray-200 dark:border-gray-700">
-                        <UPagination v-model="page" :page-count="5" :total="people.length" />
+                <UTable :rows="rows" /> 
+                    <div class="flex justify-end px-3 py-3.5 border-t border-gray-200 dark:border-gray-700">                        
+                        <UPagination v-model="page" :page-count="numberOfRecordsPerPage" :total="recordsCount" />
                     </div>
             </span>
         </div>
@@ -17,6 +17,7 @@
             <span v-if="pending">Loading...</span>
         </div>
         <div> API URL is set to: {{ url }}</div>
+        <div> Number of rows returned: {{ recordsCount }}</div>
     </UCard>
 </template>
 
@@ -26,20 +27,27 @@
 const runtimeConfig = useRuntimeConfig();
 var url = runtimeConfig.public.API_URL_PERSON_ALL
 
-console.log('API URL set to:')
-console.log(url)
+// log API URL at the console
+console.log('API URL set to: ' + url)
 
 // check if NUXT_API_URL_PERSON_ALL is set at your env
 if (url === ''){
     url = 'undefined API URL, can not find NUXT_API_URL_PERSON_ALL env variable'
 }
-const { data: people, pending, error } = await useFetch(url)
 
+// fetch API data
+const { data: people, error, pending } = await useFetch(url)
+
+// return count of records
+const recordsCount = (people.value as any[]).length
+
+// set reference and number of records per table page
 const page = ref(1)
-const pageCount = 5
-const rows = computed(() => {
-  return people.slice((page.value - 1) * pageCount, (page.value) * pageCount)
-})
+const numberOfRecordsPerPage = 5
 
+// fetch slice of data for actual table page
+const rows = computed(() => {
+  return (people.value as any[]).slice((page.value - 1) * numberOfRecordsPerPage, (page.value) * numberOfRecordsPerPage)
+});
 
 </script>
